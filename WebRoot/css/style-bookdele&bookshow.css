@@ -1,0 +1,30 @@
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	
+	body{
+		background: #000000;
+		background-image: url(../images/bg.jpg);
+		color: gainsboro;
+		
+	}
+	.tab{
+		width: 80%;
+		height: 15%;
+		margin: 50px auto;
+		text-align: center;
+	}
+	.tab caption{
+  		text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #fff, 0 0 3px #00a5a5, 0 0 3px #00a5a5;
+	}
+	
+	.tab tr:nth-child(odd){
+		background: #262A2E;
+	}
+	.tab tr:hover{
+		background-color: #00a5a5;
+	}
+	.tab a{
+		text-decoration: none;
+	}

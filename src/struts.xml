@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+     <constant name="struts.devMode" value="true" />
+     <constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+     
+     <package name="QiXing"  extends="struts-default">
+     
+     
+      	<action name="kongaction" class="com.qixing.action.KongAction">
+      		<result name="adminadd"> /WEB-INF/adminRegister.jsp</result>
+      		<result name="userAdd"> /WEB-INF/userRegister.jsp</result>
+            <result name="input"> /WEB-INF/admin.jsp </result>
+            <result name="adminaddSucc"> /WEB-INF/admins.jsp </result>
+            <result name="travelAdd"> /WEB-INF/travel/travelRegister.jsp</result>
+            <result name="littlephotoAdd"> /WEB-INF/littlephoto/addlittlephoto.jsp</result>
+      	</action>
+      	
+      	<!-- Useraction 配置 -->
+      	
+        <action name="register" class="com.qixing.action.RegisterAction">
+        	<!-- 配置fileUpload的拦截器 -->
+			<interceptor-ref name="fileUpload">
+				<!-- 配置允许上传的文件类型 -->
+				<param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/pjpeg
+				,image/jpg</param>
+				<!-- 配置允许上传的文件大小 -->
+				<param name="maximumSize">2000000</param> 
+			</interceptor-ref> 
+			<!-- 配置系统默认的拦截器 -->
+			<interceptor-ref name="defaultStack"/>
+			<!-- 动态设置Action的属性值 -->
+			<param name="savePath">/fileup</param>
+            <result name="success"> /login.jsp </result>
+            <result name="input"> /register.jsp </result>
+        </action>
+        <action name="login" class="com.qixing.action.LoginAction">
+        	<result name="login">/index.jsp</result>
+        	<result name="input"> /login.jsp </result>
+        	<result name="success">/WEB-INF/admin.jsp</result>
+        </action>
+        <action name="manage" class="com.qixing.action.AdminMessageAction">
+        	<result name="input"> /error.jsp </result>
+        	<result name="success">/WEB-INF/adminMessage.jsp</result>
+        	<result name="adminchange">/WEB-INF/adminsChange.jsp</result>
+        </action>
+        <action name="admins" class="com.qixing.action.AdminsAction">
+        	<result name="input"> /error.jsp</result>
+        	<result name="admins">/WEB-INF/admins.jsp</result>
+        	<result name="users">/WEB-INF/admins.jsp</result>
+        	<result name="succ">/WEB-INF/kong.jsp</result>
+        </action>
+        
+        <action name="adminsChangeShow" class="com.qixing.action.AdminsChangeShowAction">
+        	<result name="input"> /error.jsp </result>
+        	<result name="admins">/WEB-INF/adminsChangeShow.jsp</result>
+        	<result name="admindele">/WEB-INF/adminsDeleShow.jsp</result>
+        	<result name="users">/WEB-INF/adminsChangeShow.jsp</result>
+        	<result name="userdele">/WEB-INF/adminsDeleShow.jsp</result>
+        </action>
+        
+         <action name="adminChange" class="com.qixing.action.AdminsChangeAction">
+        	<result name="input">/WEB-INF/adminsChange.jsp</result>
+        	<result name="adminchange">/WEB-INF/changeSuccess.jsp</result>
+        </action>
+        
+        <action name="adminregister" class="com.qixing.action.RegisterAction">
+        	<!-- 配置fileUpload的拦截器 -->
+			<interceptor-ref name="fileUpload">
+				<!-- 配置允许上传的文件类型 -->
+				<param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/pjpeg
+				,image/jpg</param>
+				<!-- 配置允许上传的文件大小 -->
+				<param name="maximumSize">2000000</param> 
+			</interceptor-ref> 
+			<!-- 配置系统默认的拦截器 -->
+			<interceptor-ref name="defaultStack"/>
+			<!-- 动态设置Action的属性值 -->
+			<param name="savePath">/fileup</param>
+        	<result name="input">/error.jsp</result>
+        	<result name="success">/WEB-INF/changeSuccess.jsp</result>
+        	<result name="userRegister">/WEB-INF/changeSuccess.jsp</result>
+        </action>
+        
+        <action name="dele" class="com.qixing.action.DeleAction">
+        	<result name="input">/error.jsp</result>
+        	<result name="admindele">/WEB-INF/changeSuccess.jsp</result>
+        </action>
+        
+        
+        <!-- TravelAction  配置 -->
+        
+        <action name="TravelShow" class="com.qixing.action.travel.TravelsAction">
+        	<result name="input">/error.jsp</result>
+        	<result name="travels">/WEB-INF/travel/travelsCheck.jsp</result>
+        	<result name="travelschange">/WEB-INF/travel/travelsChangeShow.jsp</result>
+        	<result name="travelchange">/WEB-INF/travel/travelChangeShow.jsp</result>
+        	<result name="travelsdele">/WEB-INF/travel/travelDeleShow.jsp</result>
+        	<result name="traveldele">/WEB-INF/changeSuccess.jsp</result>
+        </action>
+        
+        <action name="Travelchange" class="com.qixing.action.travel.TravelChangeAction">
+        	<!-- 配置fileUpload的拦截器 -->
+			<interceptor-ref name="fileUpload">
+				<!-- 配置允许上传的文件类型 -->
+				<param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/pjpeg
+				,image/jpg</param>
+				<!-- 配置允许上传的文件大小 -->
+				<param name="maximumSize">2000000</param> 
+			</interceptor-ref> 
+			<!-- 配置系统默认的拦截器 -->
+			<interceptor-ref name="defaultStack"/>
+			<!-- 动态设置Action的属性值 -->
+			<param name="savePath">/fileup</param>
+       		<result name="input">/error.jsp</result>
+        	<result name="travelchanged">/WEB-INF/changeSuccess.jsp</result>
+        	<result name="travelRegister">/WEB-INF/changeSuccess.jsp</result>
+        </action>
+        
+        
+        <!-- GoodsAction  配置 -->
+        
+        <action name="goods" class="com.qixing.action.goods.GoodsAction">
+        	<result name="input">/error.jsp</result>
+        	<result name="goodsShow">/WEB-INF/goods/goodsShow.jsp</result>
+        	<result name="goodsChange">/WEB-INF/goods/goodsChangeShow.jsp</result>
+        	<result name="goodschangeto">/WEB-INF/goods/goodsChange.jsp</result>
+        	<result name="goodschanged">/WEB-INF/changeSuccess.jsp</result>
+        	<result name="goodsSave">/WEB-INF/goods/goodsSave.jsp</result>
+        	<result name="goodssave">/WEB-INF/changeSuccess.jsp</result>
+        	<result name="goodsDele">/WEB-INF/goods/goodsDeleShow.jsp</result>
+        	<result name="goodsdele">/WEB-INF/changeSuccess.jsp</result>
+        	<result name="usergoods">/WEB-INF/users/userOneGoods.jsp</result>
+        	<result name="userGoodsDele">/WEB-INF/users/userOneGoods.jsp</result>
+        </action>
+        
+        <!--LittlephotoAction   配置 -->
+        <action name="LittlephotoShow" class="com.qixing.action.littlephoto.LittlephotoAction">
+        	<!-- 配置fileUpload的拦截器 -->
+			<interceptor-ref name="fileUpload">
+				<!-- 配置允许上传的文件类型 -->
+				<param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/pjpeg
+				,image/jpg</param>
+				<!-- 配置允许上传的文件大小 -->
+				<param name="maximumSize">2000000</param> 
+			</interceptor-ref> 
+			<!-- 配置系统默认的拦截器 -->
+			<interceptor-ref name="defaultStack"/>
+			<!-- 动态设置Action的属性值 -->
+			<param name="savePath">/fileup</param>
+      	    <result name="input">/error.jsp</result>
+        	<result name="littlephotos">/WEB-INF/littlephoto/littlephotosShow.jsp</result>
+        	<result name="littlephotochange">/WEB-INF/littlephoto/littlephotosChangeShow.jsp</result>
+        	<result name="littlephotoChangeing">/WEB-INF/littlephoto/photochange.jsp</result>
+        	<result name="photochanged">/WEB-INF/changeSuccess.jsp</result>
+        	<result name="photoadd">/WEB-INF/changeSuccess.jsp</result>
+        	<result name="littlephotodele">/WEB-INF/littlephoto/photodeleShow.jsp</result>
+        	<result name="littlephotoDele">/WEB-INF/changeSuccess.jsp</result>
+        </action>
+        
+        <action name="photo" class="com.qixing.action.littlephoto.PhotoAction">
+        	<result name="input">/error.jsp</result>
+        	<result name="photo">/WEB-INF/littlephoto/photo.jsp</result>
+        	
+        </action>
+        
+        <!--index   配置 -->
+        <action name="index" class="com.qixing.action.users.Indexaction">
+       		<!-- 配置fileUpload的拦截器 -->
+			<interceptor-ref name="fileUpload">
+				<!-- 配置允许上传的文件类型 -->
+				<param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/pjpeg
+				,image/jpg</param>
+				<!-- 配置允许上传的文件大小 -->
+				<param name="maximumSize">2000000</param> 
+			</interceptor-ref> 
+			<!-- 配置系统默认的拦截器 -->
+			<interceptor-ref name="defaultStack"/>
+			<!-- 动态设置Action的属性值 -->
+			<param name="savePath">/fileup</param>
+        	<result name="input">/error.jsp</result>
+        	<result name="index">/index.jsp</result>
+        	<result name="ss">/index.jsp</result>
+        	<result name="success">/WEB-INF/users/userMessage.jsp</result>
+        	<result name="travelone">/travelone.jsp</result>
+        	<result name="useronexx">/WEB-INF/users/userOneMessage.jsp</result>
+        	<result name="useronexxxg">/WEB-INF/users/userOneChange.jsp</result>
+        	<result name="userOneChange">/WEB-INF/users/userOneMessage.jsp</result>
+        	<result name="useronexgmm">/WEB-INF/users/userOnePassword.jsp</result>
+        	<result name="return">/WEB-INF/users/userOnePassword.jsp</result>
+        	<result name="changePassword">/WEB-INF/users/userOnePasswordSucc.jsp</result>
+        	<result name="dzh">/WEB-INF/users/userMessage.jsp</result>
+        	<result name="chatF">/WEB-INF/users/userOneChat.jsp</result>
+        	<result name="chatChage">/WEB-INF/users/userOneChat.jsp</result>
+        	<result name="chatDele">/WEB-INF/users/userOneChat.jsp</result>
+        	<result name="huifu">/WEB-INF/users/userOneChat.jsp</result>
+        	<result name="qq">/travelone.jsp</result>
+        </action>
+        
+        <action name="address" class="com.qixing.action.address.AdderssAction">
+        	<result name="input">/error.jsp</result>
+        	<result name="useroneshdzgl">/WEB-INF/users/userOneAddress.jsp</result>
+        	<result name="addAddress">/WEB-INF/users/userOneAddress.jsp</result>
+        	<result name="addressDele">/WEB-INF/users/userOneAddress.jsp</result>
+        	<result name="addressChange">/WEB-INF/users/userOneAddressChange.jsp</result>
+        	<result name="changeAddress">/WEB-INF/users/userOneAddress.jsp</result>
+        </action>
+        
+        <action name="shoppingbus" class="com.qixing.action.shoppingbus.ShoppingbusAction">
+        	<result name="input">/error.jsp</result>
+        	<result name="usergwc">/WEB-INF/users/userOneShoppingbus.jsp</result>
+        	<result name="shoppingbusDele">/WEB-INF/users/userOneShoppingbus.jsp</result>
+        	<result name="shoppingbusChange">/WEB-INF/users/userOneShoppingbusChange.jsp</result>
+        	<result name="shoppingchanged">/WEB-INF/users/userOneShoppingbus.jsp</result>
+        	<result name="addbus">/travelone.jsp</result>
+        	<result name="addbuy">/travelone.jsp</result>
+        </action>
+        
+        <action name="*">
+			<result>/WEB-INF/content/{1}.jsp</result>
+		</action>
+     </package>
+   
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

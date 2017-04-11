@@ -1,0 +1,80 @@
+@charset "utf-8";
+/* 代码整理：大头网 www.datouwang.com */
+html,body {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-size: 14px;
+	color: #fff;
+	user-select: none;
+	-webkit-user-select: none;
+	-webkit-text-size-adjust: none;
+	background-color: #999;
+	background-image:url("../images/wait_body.jpg");
+}
+
+.game_time {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	top: 10%;
+	left: 43%;
+	text-align: center;
+	opacity: 0.9; 
+}
+
+/* time scroll*/
+.pie {
+	width: 200px;
+	height: 200px;
+	background-color: blue;
+	border-radius: 100px;
+	position: absolute;
+}
+
+.pie1 {
+	clip: rect(0px, 200px, 200px, 100px);
+	-o-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
+	background-color: #fff;
+}
+
+.pie2 {
+	clip: rect(0px, 100px, 200px, 0px);
+	-o-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
+	background-color: #fff;
+}
+
+.hold {
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	z-index: 1;
+}
+
+.bg {
+	width: 200px;
+	height: 200px;
+	border-radius: 200px;
+	position: absolute;
+	background-color: #d13c36;
+}
+
+.time {
+	width: 160px;
+	height: 160px;
+	margin: 20px 0 0 20px;
+	background-color: #e45534;
+	border-radius: 160px;
+	position: absolute;
+	z-index: 1;
+	text-align: center;
+	line-height: 160px;
+	font-size: 30px;
+}
